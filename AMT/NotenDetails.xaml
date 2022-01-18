@@ -1,0 +1,67 @@
+﻿<Page x:Class="AMT.NotenDetails"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="NotenDetails" Background="White">
+
+    <Grid Background="White" Margin="0,15,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="10" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Label Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center"
+               FontSize="20" FontWeight="Bold" Content="NOTE VIEW" x:Name="lblTitle" />
+
+        <Label Content="Lernender" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" />
+        <Label Content="Modul" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" />
+        <Label Content="Wert" Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" />
+        <Label Content="Gewicht" Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" />
+        <Label Content="Modulprüfung?" Grid.Column="0" Grid.Row="6" VerticalAlignment="Center" />
+
+        <ComboBox x:Name="comboLernender" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" SelectedItem="{Binding Path=Lernender}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBlock Text="{Binding Path=Vorname}" />
+                        <TextBlock Text=" " />
+                        <TextBlock Text="{Binding Path=Nachname}" />
+                        <TextBlock Text=" " />
+                        <TextBlock Text="{Binding Path=Lehrfirma.Name, StringFormat='({0})'}" />
+                        <TextBlock Text=" " />
+                        <TextBlock Text="{Binding Path=Geburtsdatum, StringFormat=d, ConverterCulture='de-CH'}" />
+                    </WrapPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <ComboBox x:Name="comboModul" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Text="{Binding Path=Modul}" IsEditable="True">
+            <ComboBoxItem Content="101" />
+            <ComboBoxItem Content="106" />
+            <ComboBoxItem Content="187" />
+        </ComboBox>
+        <TextBox x:Name="txtWert" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Text="{Binding Path=Wert}" />
+        <TextBox x:Name="txtGewicht" Grid.Column="1" Grid.Row="5" VerticalAlignment="Center" Text="{Binding Path=Gewicht}" />
+        <CheckBox x:Name="checkMP" Grid.Column="1" Grid.Row="6" IsChecked="{Binding Path=IstMP}"
+                  VerticalAlignment="Center" Content="Modulprüfung" />
+
+        <StackPanel Orientation="Horizontal" Grid.Row="8" Grid.ColumnSpan="2" HorizontalAlignment="Right">
+            <Button x:Name="btnOk" Content="Speichern" IsDefault="True" Click="BtnOk_Click" Margin="5" Padding="2" />
+            <Button x:Name="btnCancel" Content="Abbrechen" IsCancel="True" Click="BtnCancel_Click" Margin="5" Padding="2" />
+        </StackPanel>
+    </Grid>
+</Page>

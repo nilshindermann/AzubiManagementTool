@@ -1,0 +1,59 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="clr-namespace:AMTCore.Models;assembly=AMTCore"
+    x:Class="AMT.LernendeDetails"
+    mc:Ignorable="d"
+    d:DesignHeight="450" d:DesignWidth="800" Background="White"
+    Title="LernendeDetails" DataContext="{x:Type model:Lernende}">
+
+    <Grid Background="White" Margin="0,15,0,0" FocusManager.FocusedElement="{Binding ElementName=txtVorname}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition MinWidth="10px" Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Center"
+               FontSize="20" FontWeight="Bold" Content="nilshindermann software" x:Name="lblTitle" />
+
+        <Label Content="ID" Grid.Column="0" Grid.Row="1" Margin="3" VerticalAlignment="Center" />
+        <Label Content="Vorname" Grid.Column="0" Grid.Row="2" Margin="3" VerticalAlignment="Center" />
+        <Label Content="Nachname" Grid.Column="0" Grid.Row="3" Margin="3" VerticalAlignment="Center" />
+        <Label Content="E-Mail" Grid.Column="0" Grid.Row="4" Margin="3" VerticalAlignment="Center" />
+        <Label Content="Geburtsdatum" Grid.Column="0" Grid.Row="5" Margin="3" VerticalAlignment="Center" />
+        <Label Content="Geschlecht" Grid.Column="0" Grid.Row="6" Margin="3" VerticalAlignment="Center" />
+        <Label Content="Beruf" Grid.Column="0" Grid.Row="7" Margin="3" VerticalAlignment="Center" />
+        <Label Content="Lehrfirma" Grid.Column="0" Grid.Row="8" Margin="3" VerticalAlignment="Center" />
+
+        <TextBox x:Name="txtId" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Text="{Binding Id}" IsReadOnly="True" />
+        <TextBox x:Name="txtVorname" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Text="{Binding Vorname}" ForceCursor="True" />
+        <TextBox x:Name="txtNachname" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Text="{Binding Nachname}" />
+        <TextBox x:Name="txtEmail" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Text="{Binding Email}" />
+        <DatePicker x:Name="dateGeburt" Grid.Column="1" Grid.Row="5" VerticalAlignment="Center" SelectedDate="{Binding Geburtsdatum}" />
+        <TextBox x:Name="txtGeschlecht" MaxLength="1" Grid.Column="1" Grid.Row="6" VerticalAlignment="Center" Text="{Binding Geschlecht}" />
+        <TextBox x:Name="txtBeruf" MaxLength="3" Grid.Column="1" Grid.Row="7" VerticalAlignment="Center" Text="{Binding Beruf}" />
+        <ComboBox x:Name="comboFirma" Grid.Column="1" Grid.Row="8" VerticalAlignment="Center" SelectedItem="{Binding Lehrfirma}" DisplayMemberPath="Name" />
+        <Button x:Name="btnFirmaErstellen" Grid.Column="2" Grid.Row="8" Click="BtnFirmaErstellen_Click"
+                VerticalAlignment="Center" Content="Erstellen" Margin="3" Padding="3" />
+
+        <StackPanel Orientation="Horizontal" Grid.Row="9" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,0,15,0">
+            <Button x:Name="btnOk" Content="Speichern" IsDefault="True" Click="BtnOk_Click" Margin="0,3" />
+            <Button x:Name="btnCancel" Content="Abbrechen" IsCancel="True" Click="BtnCancel_Click" Margin="3,3,0,3" />
+        </StackPanel>
+    </Grid>
+</Page>

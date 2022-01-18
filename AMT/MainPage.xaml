@@ -1,0 +1,43 @@
+﻿<Page x:Class="AMT.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AMT"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MainPage">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Button Grid.Row="0" Margin="100 20 100 10" FontSize="20"
+                FontWeight="Bold" Cursor="Hand" Click="Button_Click" DataContext="l"
+                MaxHeight="200" MaxWidth="750">
+            <Viewbox>
+                <TextBlock Text="Lernende" Margin="20" />
+            </Viewbox>
+        </Button>
+        <Button Grid.Row="1" Margin="100 10" FontSize="20"
+                FontWeight="Bold" Cursor="Hand" Click="Button_Click" DataContext="f"
+                MaxHeight="200" MaxWidth="750">
+            <Viewbox>
+                <TextBlock Text="Lehrfirmen" Margin="20" />
+            </Viewbox>
+        </Button>
+        <Button Grid.Row="2" Margin="100 10 100 20" FontSize="20"
+                FontWeight="Bold" Cursor="Hand" Click="Button_Click" DataContext="k"
+                MaxHeight="200" MaxWidth="750">
+            <Viewbox>
+                <TextBlock Text="Kontaktpersonen" Margin="20" />
+            </Viewbox>
+        </Button>
+
+        <TextBlock Grid.Row="4" TextAlignment="Center" Background="LightGray" Padding="5">Made with &#x2764; by Nils Hindermann</TextBlock>
+    </Grid>
+</Page>

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMTCore", "AMTCore\AMTCore.csproj", "{0DA15F2B-5059-49B3-AD39-CB804ECF0E98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMT", "AMT\AMT.csproj", "{4F1DFDA0-4321-41A3-AE2A-34D71014ECB8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0DA15F2B-5059-49B3-AD39-CB804ECF0E98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DA15F2B-5059-49B3-AD39-CB804ECF0E98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DA15F2B-5059-49B3-AD39-CB804ECF0E98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DA15F2B-5059-49B3-AD39-CB804ECF0E98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F1DFDA0-4321-41A3-AE2A-34D71014ECB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F1DFDA0-4321-41A3-AE2A-34D71014ECB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F1DFDA0-4321-41A3-AE2A-34D71014ECB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F1DFDA0-4321-41A3-AE2A-34D71014ECB8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CA28F2DE-D490-4BDA-AF17-F99082BAE85E}
+	EndGlobalSection
+EndGlobal
