@@ -24,6 +24,7 @@
     </Page.CommandBindings>
 
     <Page.Resources>
+        <self:JaNeinConverter x:Key="JaNeinConvert" />
         <Style x:Key="TextTitle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="18" />
             <Setter Property="FontWeight" Value="Bold" />
@@ -73,6 +74,14 @@
                 <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=Lehrfirma.Name}" />
                 <TextBlock Style="{StaticResource TextHeader}" Text="Schule" />
                 <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=Schule}" />
+                <TextBlock Style="{StaticResource TextHeader}" Text="Schulklasse" />
+                <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=Schulklasse}" />
+                <TextBlock Style="{StaticResource TextHeader}" Text="BMS" />
+                <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=BMS, Converter={StaticResource JaNeinConvert}}" />
+                <TextBlock Style="{StaticResource TextHeader}" Text="Beginn Grundausbildung" />
+                <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=BeginnGrundausbildung, StringFormat=d, ConverterCulture='de-CH'}" />
+                <TextBlock Style="{StaticResource TextHeader}" Text="Ende Grundausbildung" />
+                <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=EndeGrundausbildung, StringFormat=d, ConverterCulture='de-CH'}" />
             </StackPanel>
         </ScrollViewer>
         <GridSplitter Width="10" Grid.Column="1" HorizontalAlignment="Stretch" />
