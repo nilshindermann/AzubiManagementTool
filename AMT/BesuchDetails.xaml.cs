@@ -49,6 +49,7 @@ namespace AMT
                     comboLernender.IsReadOnly = true;
                     comboKontaktperson.IsReadOnly = true;
                     comboGrund.IsReadOnly = true;
+                    btnOk.Content = "Löschen";
                     break;
 
                 default:

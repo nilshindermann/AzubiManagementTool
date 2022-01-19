@@ -46,6 +46,7 @@ namespace AMT
                     txtWert.IsReadOnly = true;
                     txtGewicht.IsReadOnly = true;
                     checkMP.IsEnabled = false;
+                    btnOk.Content = "Löschen";
                     break;
 
                 default:

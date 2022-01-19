@@ -40,28 +40,6 @@ namespace AMT
             }
         }
 
-        private void BtnBesuchAdd_Click(object sender, RoutedEventArgs e)
-        {
-            var besuch = new Besuch
-            {
-                Lernender = (Lernende)DataContext
-            };
-
-            var page = new BesuchDetails(_db, Model.Mode.NEW, besuch);
-            NavigationService.Navigate(page);
-        }
-
-        private void BtnNoteAdd_Click(object sender, RoutedEventArgs e)
-        {
-            var note = new Note
-            {
-                Lernender = (Lernende)DataContext
-            };
-
-            var page = new NotenDetails(_db, Model.Mode.NEW, note);
-            NavigationService.Navigate(page);
-        }
-
         private void CommandEdit_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             // only can execute if parameter is a specific string and an item is selected
@@ -74,8 +52,8 @@ namespace AMT
         {
             if (e.Parameter is string param)
             {
-                var besuch = new Besuch { Lernender = (Lernende)DataContext };
-                var note = new Note { Lernender = (Lernende)DataContext };
+                var besuch = (Besuch)listBesuche.SelectedItem;
+                var note = (Note)listNoten.SelectedItem;
 
                 // page navigating to, if not null
                 object? page =
@@ -92,13 +70,56 @@ namespace AMT
 
         private void ApplicationNew_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            // only can execute if lists exist
-            e.CanExecute = listBesuche != null && listNoten != null;
+            // only can execute if parameter is a specific string
+            e.CanExecute = e.Parameter is string s && (
+                (s == "NOTE" && listNoten != null) ||
+                (s == "BESUCH" && listBesuche != null));
         }
 
         private void ApplicationNew_Executed(object sender, ExecutedRoutedEventArgs e)
         {
+            if (e.Parameter is string param)
+            {
+                var besuch = new Besuch { Lernender = (Lernende)DataContext };
+                var note = new Note { Lernender = (Lernende)DataContext };
 
+                object? page =
+                    param == "BESUCH" ? new BesuchDetails(_db, Model.Mode.NEW, besuch) :
+                    param == "NOTE" ? new NotenDetails(_db, Model.Mode.NEW, note) : null;
+
+                if (page != null)
+                {
+                    NavigationService.Navigate(page);
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void ApplicationDelete_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            // only can execute if parameter is a specific string and an item is selected
+            e.CanExecute = e.Parameter is string s && (
+                (s == "NOTE" && listNoten != null && listNoten.SelectedItem != null) ||
+                (s == "BESUCH" && listBesuche != null && listBesuche.SelectedItem != null));
+        }
+
+        private void ApplicationDelete_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (e.Parameter is string param)
+            {
+                var besuch = (Besuch)listBesuche.SelectedItem;
+                var note = (Note)listNoten.SelectedItem;
+
+                object? page =
+                    param == "BESUCH" ? new BesuchDetails(_db, Model.Mode.DELETE, besuch) :
+                    param == "NOTE" ? new NotenDetails(_db, Model.Mode.DELETE, note) : null;
+
+                if (page != null)
+                {
+                    NavigationService.Navigate(page);
+                    e.Handled = true;
+                }
+            }
         }
     }
 }

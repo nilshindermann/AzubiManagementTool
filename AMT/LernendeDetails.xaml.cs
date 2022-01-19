@@ -50,6 +50,7 @@ namespace AMT
                     txtEmail.IsReadOnly = true;
                     txtGeschlecht.IsReadOnly = true;
                     txtBeruf.IsReadOnly = true;
+                    btnOk.Content = "Löschen";
                     break;
 
                 default:

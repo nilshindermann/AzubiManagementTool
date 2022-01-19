@@ -54,6 +54,7 @@ namespace AMT
                     txtAdresse.IsReadOnly = true;
                     txtOrt.IsReadOnly = true;
                     txtPlz.IsReadOnly = true;
+                    btnOk.Content = "Löschen";
                     break;
 
                 default:
