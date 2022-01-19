@@ -3,14 +3,14 @@ using AMTCore.Data;
 using AMTCore.Models;
 using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
+using System.Windows.Navigation;
 
 namespace AMT
 {
     /// <summary>
     /// Interaktionslogik für BesuchDetails.xaml
     /// </summary>
-    public partial class BesuchDetails : Page
+    public partial class BesuchDetails
     {
         private readonly AMTContext _db;
         private readonly Mode _mode = Mode.NONE;
@@ -79,12 +79,12 @@ namespace AMT
             }
 
             _db.SaveChanges();
-            NavigationService.GoBack();
+            OnReturn(new ReturnEventArgs<Besuch>((Besuch)DataContext));
         }
 
         private void BtnCancel_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
+            OnReturn(null);
         }
     }
 }

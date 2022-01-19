@@ -3,8 +3,8 @@ using AMTCore.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using System.Linq;
-using System.Windows;
 using System.Windows.Input;
+using System.Windows.Navigation;
 
 namespace AMT
 {
@@ -21,9 +21,14 @@ namespace AMT
             DataContext = lernende;
             _db = db;
 
-            listBesuche.ItemsSource = _db.Besuche.Where(b => b.Lernender!.Id == lernende.Id)
+            RefreshLists();
+        }
+
+        private void RefreshLists()
+        {
+            listBesuche.ItemsSource = _db.Besuche.Where(b => b.Lernender!.Id == ((Lernende)DataContext).Id)
                 .Include(b => b.Kontaktperson).ToList();
-            listNoten.ItemsSource = _db.Noten.Where(b => b.Lernender!.Id == lernende.Id).ToList();
+            listNoten.ItemsSource = _db.Noten.Where(b => b.Lernender!.Id == ((Lernende)DataContext).Id).ToList();
         }
 
         private void CommandSendMail_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -52,18 +57,25 @@ namespace AMT
         {
             if (e.Parameter is string param)
             {
-                var besuch = (Besuch)listBesuche.SelectedItem;
-                var note = (Note)listNoten.SelectedItem;
-
-                // page navigating to, if not null
-                object? page =
-                    param == "BESUCH" ? new BesuchDetails(_db, Model.Mode.EDIT, besuch) :
-                    param == "NOTE" ? new NotenDetails(_db, Model.Mode.EDIT, note) : null;
-
-                if (page != null)
+                switch (param)
                 {
-                    NavigationService.Navigate(page);
-                    e.Handled = true;
+                    case "BESUCH":
+                        var besuch = (Besuch)listBesuche.SelectedItem;
+                        PageFunction<Besuch> pageBesuch = new BesuchDetails(_db, Model.Mode.EDIT, besuch);
+                        pageBesuch.Return += (s, ev) => RefreshLists();
+                        NavigationService.Navigate(pageBesuch);
+                        e.Handled = true;
+                        break;
+
+                    case "NOTE":
+                        var note = (Note)listNoten.SelectedItem;
+                        PageFunction<Note> pageNote = new NotenDetails(_db, Model.Mode.EDIT, note);
+                        pageNote.Return += (s, ev) => RefreshLists();
+                        NavigationService.Navigate(pageNote);
+                        e.Handled = true;
+                        break;
+                    default:
+                        break;
                 }
             }
         }
@@ -80,17 +92,25 @@ namespace AMT
         {
             if (e.Parameter is string param)
             {
-                var besuch = new Besuch { Lernender = (Lernende)DataContext };
-                var note = new Note { Lernender = (Lernende)DataContext };
-
-                object? page =
-                    param == "BESUCH" ? new BesuchDetails(_db, Model.Mode.NEW, besuch) :
-                    param == "NOTE" ? new NotenDetails(_db, Model.Mode.NEW, note) : null;
-
-                if (page != null)
+                switch (param)
                 {
-                    NavigationService.Navigate(page);
-                    e.Handled = true;
+                    case "BESUCH":
+                        var besuch = new Besuch { Lernender = (Lernende)DataContext };
+                        PageFunction<Besuch> pageBesuch = new BesuchDetails(_db, Model.Mode.NEW, besuch);
+                        pageBesuch.Return += (s, ev) => RefreshLists();
+                        NavigationService.Navigate(pageBesuch);
+                        e.Handled = true;
+                        break;
+
+                    case "NOTE":
+                        var note = new Note { Lernender = (Lernende)DataContext };
+                        PageFunction<Note> pageNote = new NotenDetails(_db, Model.Mode.NEW, note);
+                        pageNote.Return += (s, ev) => RefreshLists();
+                        NavigationService.Navigate(pageNote);
+                        e.Handled = true;
+                        break;
+                    default:
+                        break;
                 }
             }
         }
@@ -107,17 +127,25 @@ namespace AMT
         {
             if (e.Parameter is string param)
             {
-                var besuch = (Besuch)listBesuche.SelectedItem;
-                var note = (Note)listNoten.SelectedItem;
-
-                object? page =
-                    param == "BESUCH" ? new BesuchDetails(_db, Model.Mode.DELETE, besuch) :
-                    param == "NOTE" ? new NotenDetails(_db, Model.Mode.DELETE, note) : null;
-
-                if (page != null)
+                switch (param)
                 {
-                    NavigationService.Navigate(page);
-                    e.Handled = true;
+                    case "BESUCH":
+                        var besuch = (Besuch)listBesuche.SelectedItem;
+                        PageFunction<Besuch> pageBesuch = new BesuchDetails(_db, Model.Mode.DELETE, besuch);
+                        pageBesuch.Return += (s, ev) => RefreshLists();
+                        NavigationService.Navigate(pageBesuch);
+                        e.Handled = true;
+                        break;
+
+                    case "NOTE":
+                        var note = (Note)listNoten.SelectedItem;
+                        PageFunction<Note> pageNote = new NotenDetails(_db, Model.Mode.DELETE, note);
+                        pageNote.Return += (s, ev) => RefreshLists();
+                        NavigationService.Navigate(pageNote);
+                        e.Handled = true;
+                        break;
+                    default:
+                        break;
                 }
             }
         }

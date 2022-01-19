@@ -4,14 +4,14 @@ using AMTCore.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
+using System.Windows.Navigation;
 
 namespace AMT
 {
     /// <summary>
     /// Interaktionslogik für NotenDetails.xaml
     /// </summary>
-    public partial class NotenDetails : Page
+    public partial class NotenDetails
     {
         private readonly AMTContext _db;
         private readonly Mode _mode = Mode.NONE;
@@ -76,12 +76,12 @@ namespace AMT
             }
 
             _db.SaveChanges();
-            NavigationService.GoBack();
+            OnReturn(new ReturnEventArgs<Note>((Note)DataContext));
         }
 
         private void BtnCancel_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
+            OnReturn(null);
         }
     }
 }

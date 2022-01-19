@@ -23,6 +23,22 @@
                         Executed="ApplicationDelete_Executed" />
     </Page.CommandBindings>
 
+    <Page.Resources>
+        <Style x:Key="TextTitle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+        <Style x:Key="TextHeader" TargetType="TextBlock">
+            <Setter Property="Margin" Value="2" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+        <Style x:Key="TextValue" TargetType="TextBlock">
+            <Setter Property="Margin" Value="2 0 2 4" />
+            <Setter Property="FontWeight" Value="Normal" />
+        </Style>
+    </Page.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="30*" MinWidth="50" />
@@ -32,12 +48,31 @@
             <ColumnDefinition Width="40*" MinWidth="50" />
         </Grid.ColumnDefinitions>
 
-        <ScrollViewer Grid.Column="0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-            <StackPanel Orientation="Vertical">
-                <TextBlock Text="{Binding Path=Vorname}" />
-                <TextBlock Text="{Binding Path=Nachname}" />
-                <TextBlock Text="{Binding Path=Geburtsdatum, StringFormat=d, ConverterCulture='de-CH'}" />
-                <TextBlock Text="{Binding Path=Lehrfirma.Name}" />
+        <ScrollViewer Grid.Column="0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Padding="5">
+            <StackPanel>
+                <TextBlock Style="{StaticResource TextHeader}" Text="Vorname" />
+                <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=Vorname}" />
+                <TextBlock Style="{StaticResource TextHeader}" Text="Nachname" />
+                <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=Nachname}" />
+                <TextBlock Style="{StaticResource TextHeader}" Text="Geschlecht" />
+                <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=Geschlecht}" />
+                <TextBlock Style="{StaticResource TextHeader}" Text="Geburtsdatum" />
+                <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=Geburtsdatum, StringFormat=d, ConverterCulture='de-CH'}" />
+                <TextBlock Style="{StaticResource TextHeader}" Text="E-Mail (azo)" />
+                <TextBlock Style="{StaticResource TextValue}">
+                    <Hyperlink Command="self:CustomCommands.SendMail">
+                        <Hyperlink.CommandParameter>
+                            <Binding Path="Email" />
+                        </Hyperlink.CommandParameter>
+                        <Run Text="{Binding Path=Email}" />
+                    </Hyperlink>
+                </TextBlock>
+                <TextBlock Style="{StaticResource TextHeader}" Text="Beruf" />
+                <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=Beruf}" />
+                <TextBlock Style="{StaticResource TextHeader}" Text="Lehrfirma" />
+                <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=Lehrfirma.Name}" />
+                <TextBlock Style="{StaticResource TextHeader}" Text="Schule" />
+                <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=Schule}" />
             </StackPanel>
         </ScrollViewer>
         <GridSplitter Width="10" Grid.Column="1" HorizontalAlignment="Stretch" />
@@ -52,7 +87,7 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <TextBlock FontWeight="Bold" FontSize="18" Grid.ColumnSpan="3" HorizontalAlignment="Center" Text="Noten" />
+            <TextBlock Style="{StaticResource TextTitle}" Grid.ColumnSpan="3" Text="Noten" />
             <ListView x:Name="listNoten" Grid.Row="1" Grid.ColumnSpan="3" SelectionMode="Single">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -60,7 +95,7 @@
                             <TextBlock Text="Modul " />
                             <TextBlock Text="{Binding Path=Modul}" />
                             <TextBlock Text=" | " />
-                            <TextBlock Text="{Binding Path=Wert}" />
+                            <TextBlock Text="{Binding Path=Wert, StringFormat='{}{0:0.00}'}" />
                             <TextBlock Text=" | Gewicht: " />
                             <TextBlock Text="{Binding Path=Gewicht}" />
                         </WrapPanel>
@@ -86,7 +121,7 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <TextBlock FontWeight="Bold" FontSize="18" Grid.ColumnSpan="3" HorizontalAlignment="Center" Text="Besuche" />
+            <TextBlock Style="{StaticResource TextTitle}" Grid.ColumnSpan="3" Text="Besuche" />
             <ListView x:Name="listBesuche" Grid.Row="1" Grid.ColumnSpan="3" SelectionMode="Single">
                 <ListView.ItemTemplate>
                     <DataTemplate>
