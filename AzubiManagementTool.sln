@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMTCore", "AMTCore\AMTCore.csproj", "{0DA15F2B-5059-49B3-AD39-CB804ECF0E98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AMTCore", "AMTCore\AMTCore.csproj", "{0DA15F2B-5059-49B3-AD39-CB804ECF0E98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMT", "AMT\AMT.csproj", "{4F1DFDA0-4321-41A3-AE2A-34D71014ECB8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AMT", "AMT\AMT.csproj", "{4F1DFDA0-4321-41A3-AE2A-34D71014ECB8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

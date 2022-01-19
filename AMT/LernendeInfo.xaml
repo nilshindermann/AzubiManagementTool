@@ -18,6 +18,9 @@
         <CommandBinding Command="ApplicationCommands.New"
                         CanExecute="ApplicationNew_CanExecute"
                         Executed="ApplicationNew_Executed" />
+        <CommandBinding Command="ApplicationCommands.Delete"
+                        CanExecute="ApplicationDelete_CanExecute"
+                        Executed="ApplicationDelete_Executed" />
     </Page.CommandBindings>
 
     <Grid>
@@ -64,9 +67,12 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button Grid.Row="2" Grid.Column="0" Padding="2" Margin="2" Content="NEU" Click="BtnNoteAdd_Click" />
-            <Button Grid.Row="2" Grid.Column="1" Padding="2" Margin="2" Content="ÄNDERN" IsEnabled="False" />
-            <Button Grid.Row="2" Grid.Column="2" Padding="2" Margin="2" Content="LÖSCHEN" IsEnabled="False" />
+            <Button Grid.Row="2" Grid.Column="0" Padding="2" Margin="2" Content="NEU"
+                    Command="ApplicationCommands.New" CommandParameter="NOTE" />
+            <Button Grid.Row="2" Grid.Column="1" Padding="2" Margin="2" Content="ÄNDERN"
+                    Command="self:CustomCommands.Edit" CommandParameter="NOTE" />
+            <Button Grid.Row="2" Grid.Column="2" Padding="2" Margin="2" Content="LÖSCHEN"
+                    Command="ApplicationCommands.Delete" CommandParameter="NOTE" />
         </Grid>
         <GridSplitter Width="10" Grid.Column="3" HorizontalAlignment="Stretch" />
         <Grid Grid.Column="4">
@@ -95,9 +101,12 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button Grid.Row="2" Grid.Column="0" Padding="2" Margin="2" Content="NEU" Click="BtnBesuchAdd_Click" />
-            <Button Grid.Row="2" Grid.Column="1" Padding="2" Margin="2" Content="ÄNDERN" IsEnabled="False" />
-            <Button Grid.Row="2" Grid.Column="2" Padding="2" Margin="2" Content="LÖSCHEN" IsEnabled="False" />
+            <Button Grid.Row="2" Grid.Column="0" Padding="2" Margin="2" Content="NEU"
+                    Command="ApplicationCommands.New" CommandParameter="BESUCH" />
+            <Button Grid.Row="2" Grid.Column="1" Padding="2" Margin="2" Content="ÄNDERN"
+                    Command="self:CustomCommands.Edit" CommandParameter="BESUCH" />
+            <Button Grid.Row="2" Grid.Column="2" Padding="2" Margin="2" Content="LÖSCHEN"
+                    Command="ApplicationCommands.Delete" CommandParameter="BESUCH" />
         </Grid>
     </Grid>
 </Page>

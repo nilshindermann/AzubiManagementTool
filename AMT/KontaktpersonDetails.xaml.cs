@@ -48,6 +48,7 @@ namespace AMT
                     txtVorname.IsReadOnly = true;
                     txtNachname.IsReadOnly = true;
                     txtEmail.IsReadOnly = true;
+                    btnOk.Content = "Löschen";
                     break;
 
                 default:
