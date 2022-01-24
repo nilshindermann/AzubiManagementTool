@@ -1,7 +1,6 @@
 ﻿using AMTCore.Data;
 using AMTCore.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -24,11 +23,17 @@ namespace AMT
             _db = db;
         }
 
+        /// <summary>
+        /// Aktualisiert die Liste mit Kontaktpersonen
+        /// </summary>
         private async void Fetch()
         {
             listView.ItemsSource = await _db.Kontaktpersonen.Include(l => l.Lehrfirma).ToListAsync();
         }
 
+        /// <summary>
+        /// Speichert Änderungen der Datenbank und aktualisiert die Liste mit Kontaktpersonen
+        /// </summary>
         private async void SaveAndFetch()
         {
             await _db.SaveChangesAsync();
@@ -128,6 +133,10 @@ namespace AMT
             }
         }
 
+        /// <summary>
+        /// Öffnet das Standard-Mailprogramm mit bereits eingegebenen E-Mail Adressen der Kontaktpersonen
+        /// </summary>
+        /// <param name="kontaktpersonen">Liste mit Kontaktpersonen</param>
         private static void MailTo(IEnumerable<Kontaktperson> kontaktpersonen)
         {
             string mails = string.Empty;

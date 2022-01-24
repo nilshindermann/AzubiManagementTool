@@ -12,8 +12,8 @@ namespace AMT
     /// </summary>
     public partial class KontaktpersonDetails
     {
-        private AMTContext? _db = null;
-        private Mode _mode = Mode.NONE;
+        private readonly AMTContext? _db = null;
+        private readonly Mode _mode = Mode.NONE;
 
         public KontaktpersonDetails(AMTContext db, Mode mode, Kontaktperson? kontaktperson)
         {

@@ -24,6 +24,9 @@ namespace AMT
             RefreshLists();
         }
 
+        /// <summary>
+        /// Aktualisiert die Liste mit den Noten und die Liste mit den Besuchen
+        /// </summary>
         private void RefreshLists()
         {
             listBesuche.ItemsSource = _db.Besuche.Where(b => b.Lernender!.Id == ((Lernende)DataContext).Id)

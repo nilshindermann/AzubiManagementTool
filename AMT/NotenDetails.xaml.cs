@@ -54,6 +54,11 @@ namespace AMT
             }
         }
 
+        /// <summary>
+        /// OK Button Click
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event</param>
         private void BtnOk_Click(object sender, RoutedEventArgs e)
         {
             // Title and Elements
@@ -79,6 +84,11 @@ namespace AMT
             OnReturn(new ReturnEventArgs<Note>((Note)DataContext));
         }
 
+        /// <summary>
+        /// Abbruch Button Click
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event</param>
         private void BtnCancel_Click(object sender, RoutedEventArgs e)
         {
             OnReturn(null);

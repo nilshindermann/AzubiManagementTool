@@ -24,11 +24,17 @@ namespace AMT
             _db = db;
         }
 
+        /// <summary>
+        /// Aktualisiert die Liste neu
+        /// </summary>
         private async void Fetch()
         {
             listView.ItemsSource = await _db.Lernende.Include(l => l.Lehrfirma).ToListAsync();
         }
 
+        /// <summary>
+        /// Speichert Änderungen der Datenbank und aktualisiert die Liste
+        /// </summary>
         private async void SaveAndFetch()
         {
             await _db.SaveChangesAsync();
@@ -127,6 +133,10 @@ namespace AMT
             }
         }
 
+        /// <summary>
+        /// Öffnet das Standard-Mailprogramm mit bereits eingegebenen E-Mail Adressen der Lernenden
+        /// </summary>
+        /// <param name="lernende">Liste mit Lernenden</param>
         private static void MailTo(IEnumerable<Lernende> lernende)
         {
             string mails = string.Empty;

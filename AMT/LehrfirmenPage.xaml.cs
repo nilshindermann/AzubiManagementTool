@@ -22,11 +22,17 @@ namespace AMT
             _db = db;
         }
 
+        /// <summary>
+        /// Aktualisiert die Liste mit Lehrfirmen
+        /// </summary>
         private async void Fetch()
         {
             listView.ItemsSource = await _db.Lehrfirmen.ToListAsync();
         }
 
+        /// <summary>
+        /// Speichert Änderungen der Datenbank und aktualisiert die Liste mit Lehrfirmen
+        /// </summary>
         private async void SaveAndFetch()
         {
             await _db.SaveChangesAsync();

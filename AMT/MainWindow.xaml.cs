@@ -8,7 +8,7 @@ using System.Windows.Navigation;
 namespace AMT
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaktionslogik vom Hauptfenster (MainWindow.xaml)
     /// </summary>
     public partial class MainWindow
     {
