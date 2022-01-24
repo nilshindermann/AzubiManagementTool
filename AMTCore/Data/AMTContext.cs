@@ -16,5 +16,14 @@ namespace AMTCore.Data
         {
             optionsBuilder.UseSqlServer("Data Source=hind-pc\\SQLEXPRESS;Initial Catalog=AMT;Integrated Security=True");
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Lernende>().HasComment("Tabelle Lernende");
+            modelBuilder.Entity<Lehrfirma>().HasComment("Tabelle der Lehrfirmen mit Adresse");
+            modelBuilder.Entity<Kontaktperson>().HasComment("Tabelle der Kontaktpersonen");
+            modelBuilder.Entity<Besuch>().HasComment("Besuche");
+            modelBuilder.Entity<Note>().HasComment("Tabelle in der die Noten der Lernenden abgespeichert sind");
+        }
     }
 }
