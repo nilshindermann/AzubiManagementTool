@@ -19,11 +19,11 @@ namespace AMTCore.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Lernende>().HasComment("Tabelle Lernende");
-            modelBuilder.Entity<Lehrfirma>().HasComment("Tabelle der Lehrfirmen mit Adresse");
-            modelBuilder.Entity<Kontaktperson>().HasComment("Tabelle der Kontaktpersonen");
-            modelBuilder.Entity<Besuch>().HasComment("Besuche");
-            modelBuilder.Entity<Note>().HasComment("Tabelle in der die Noten der Lernenden abgespeichert sind");
+            modelBuilder.Entity<Lernende>().HasComment("Auszubildende im Ausbildungszentrum Zürcher Oberland");
+            modelBuilder.Entity<Lehrfirma>().HasComment("Lehrfirmen mit Adresse");
+            modelBuilder.Entity<Kontaktperson>().HasComment("Kontaktpersonen der Lernenden bei Lehrfirmen");
+            modelBuilder.Entity<Besuch>().HasComment("Besuche von Kontaktpersonen");
+            modelBuilder.Entity<Note>().HasComment("Noten der Lernenden in den Modulen");
         }
     }
 }
