@@ -2,6 +2,9 @@
 
 namespace AMTCore.Models
 {
+    /// <summary>
+    /// Model-Klasse für eine Note eines Lernenden in einem Modul
+    /// </summary>
     public class Note
     {
         [Key]

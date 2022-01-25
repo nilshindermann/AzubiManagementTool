@@ -2,6 +2,10 @@
 
 namespace AMTCore.Models
 {
+    /// <summary>
+    /// Aktuell unbenutzte Klasse.
+    /// Wäre zum Zuordnen von Kontaktpersonen
+    /// </summary>
     public class LernendeKontaktperson
     {
         [Key]

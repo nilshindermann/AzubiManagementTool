@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AMTCore.Models
 {
+    /// <summary>
+    /// Model-Klasse für eine Kontaktperson einer Lehrfirma
+    /// </summary>
     public class Kontaktperson
     {
         [Key]

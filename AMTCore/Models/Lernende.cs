@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AMTCore.Models
 {
+    /// <summary>
+    /// Model-Klasse für einen Lernenden mit vielen Informationen
+    /// </summary>
     public class Lernende
     {
         [Key]

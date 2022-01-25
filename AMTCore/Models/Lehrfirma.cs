@@ -2,6 +2,9 @@
 
 namespace AMTCore.Models
 {
+    /// <summary>
+    /// Model-Klasse für eine Lehrfirma mit Adresse
+    /// </summary>
     public class Lehrfirma
     {
         [Key]

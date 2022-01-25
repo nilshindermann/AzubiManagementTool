@@ -2,6 +2,9 @@
 
 namespace AMTCore.Models
 {
+    /// <summary>
+    /// Model-Klasse für einen Besuch eines Lernenden von einer Kontaktperson
+    /// </summary>
     public class Besuch
     {
         [Key]
