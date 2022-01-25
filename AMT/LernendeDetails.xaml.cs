@@ -15,6 +15,12 @@ namespace AMT
         private AMTContext? _db = null;
         private Mode _mode = Mode.NONE;
 
+        /// <summary>
+        /// Erstellt einen Detaildialog eines Lernenden.
+        /// </summary>
+        /// <param name="db">Context zur DB</param>
+        /// <param name="mode">Erstellen, Aenderung, Loeschen</param>
+        /// <param name="lernende">Lernender [optional]</param>
         public LernendeDetails(AMTContext db, Mode mode, Lernende? lernende)
         {
             InitializeComponent();
