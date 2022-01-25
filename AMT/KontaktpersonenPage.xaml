@@ -64,6 +64,7 @@
                     <GridViewColumn DisplayMemberBinding="{Binding Vorname}" Header="Vorname" />
                     <GridViewColumn DisplayMemberBinding="{Binding Path=Lehrfirma.Name}" Header="Lehrfirma" />
                     <GridViewColumn Header="Email" CellTemplate="{StaticResource cellEmail}" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Telefon}" Header="Telefon" />
                 </GridView>
             </ListView.View>
         </ListView>
