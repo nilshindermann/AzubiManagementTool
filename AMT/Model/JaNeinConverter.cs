@@ -4,6 +4,9 @@ using System.Windows.Data;
 
 namespace AMT.Model
 {
+    /// <summary>
+    /// Klasse zum Konvertieren von Boolean nach String "Ja" oder "Nein" und umgekehrt
+    /// </summary>
     public class JaNeinConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
