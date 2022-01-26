@@ -14,7 +14,7 @@ namespace AMTCore.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=hind-pc\\SQLEXPRESS;Initial Catalog=AMT;Integrated Security=True");
+            optionsBuilder.UseSqlServer("Data Source=localhost\\SQLEXPRESS;Initial Catalog=AMT;Integrated Security=True");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
