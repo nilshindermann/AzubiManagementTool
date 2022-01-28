@@ -3,6 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AMTCore.Data
 {
+    /// <summary>
+    /// Kontext zur SQL-Server-Express Datenbank
+    /// </summary>
     public class AMTContext : DbContext
     {
         public DbSet<Lernende> Lernende { get; set; }
