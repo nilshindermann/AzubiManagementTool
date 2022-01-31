@@ -37,16 +37,35 @@
         <Label Content="Lehrfirma" Grid.Column="0" Grid.Row="6" Margin="3" VerticalAlignment="Center" />
 
         <TextBox x:Name="txtId" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Text="{Binding Id}" IsReadOnly="True" />
-        <TextBox x:Name="txtVorname" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Text="{Binding Vorname}" ForceCursor="True" />
-        <TextBox x:Name="txtNachname" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Text="{Binding Nachname}" />
-        <TextBox x:Name="txtEmail" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Text="{Binding Email}" />
+        <TextBox x:Name="txtVorname" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Text="{Binding Vorname, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ForceCursor="True" />
+        <TextBox x:Name="txtNachname" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Text="{Binding Nachname, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox x:Name="txtEmail" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Text="{Binding Email, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
         <TextBox x:Name="txtTelefon" Grid.Column="1" Grid.Row="5" VerticalAlignment="Center" Text="{Binding Telefon}" />
-        <ComboBox x:Name="comboFirma" Grid.Column="1" Grid.Row="6" VerticalAlignment="Center" SelectedItem="{Binding Lehrfirma}" DisplayMemberPath="Name" />
+        <ComboBox x:Name="comboFirma" Grid.Column="1" Grid.Row="6" VerticalAlignment="Center" SelectedItem="{Binding Lehrfirma, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" />
         <Button x:Name="btnFirmaErstellen" Grid.Column="2" Grid.Row="7" Click="BtnFirmaErstellen_Click"
                 VerticalAlignment="Center" Content="Erstellen" Margin="3" Padding="3" />
 
         <StackPanel Orientation="Horizontal" Grid.Row="8" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,0,15,0">
-            <Button x:Name="btnOk" Content="Speichern" IsDefault="True" Click="BtnOk_Click" Margin="0,3" />
+            <Button x:Name="btnOk" Content="Speichern" IsDefault="True" Click="BtnOk_Click" Margin="0,3">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=txtVorname, Path=(Validation.HasError)}" Value="True">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=txtNachname, Path=(Validation.HasError)}" Value="True">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=txtEmail, Path=(Validation.HasError)}" Value="True">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=comboFirma, Path=(Validation.HasError)}" Value="True">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
             <Button x:Name="btnCancel" Content="Abbrechen" IsCancel="True" Click="BtnCancel_Click" Margin="3,3,0,3" />
         </StackPanel>
     </Grid>
