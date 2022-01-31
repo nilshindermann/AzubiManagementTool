@@ -39,8 +39,8 @@
 
         <TextBox x:Name="txtId" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Text="{Binding Id}" IsReadOnly="True" />
         <ctrls:DateTimePicker x:Name="dateDatum" Grid.Column="1" Grid.Row="2"
-                              VerticalAlignment="Center" ForceCursor="True" SelectedDate="{Binding Datum}" />
-        <ComboBox x:Name="comboLernender" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" SelectedItem="{Binding Lernender}">
+                              VerticalAlignment="Center" ForceCursor="True" SelectedDate="{Binding Datum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+        <ComboBox x:Name="comboLernender" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" SelectedItem="{Binding Lernender, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel>
@@ -55,7 +55,7 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <ComboBox x:Name="comboKontaktperson" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" SelectedItem="{Binding Kontaktperson}">
+        <ComboBox x:Name="comboKontaktperson" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" SelectedItem="{Binding Kontaktperson, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel>
@@ -68,13 +68,32 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <ComboBox x:Name="comboGrund" Grid.Column="1" Grid.Row="5" VerticalAlignment="Center" Text="{Binding Grund}" IsEditable="True">
+        <ComboBox x:Name="comboGrund" Grid.Column="1" Grid.Row="5" VerticalAlignment="Center" Text="{Binding Grund, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" IsEditable="True">
             <ComboBoxItem Content="Notenbesprechung" />
             <ComboBoxItem Content="Semesterbesprechung" />
         </ComboBox>
 
         <StackPanel Orientation="Horizontal" Grid.Row="7" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,0,15,0">
-            <Button x:Name="btnOk" Content="Speichern" IsDefault="True" Click="BtnOk_Click" Margin="0,3" />
+            <Button x:Name="btnOk" Content="Speichern" IsDefault="True" Click="BtnOk_Click" Margin="0,3">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=dateDatum, Path=(Validation.HasError)}" Value="True">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=comboLernender, Path=(Validation.HasError)}" Value="True">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=comboKontaktperson, Path=(Validation.HasError)}" Value="True">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=comboGrund, Path=(Validation.HasError)}" Value="True">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
             <Button x:Name="btnCancel" Content="Abbrechen" IsCancel="True" Click="BtnCancel_Click" Margin="3,3,0,3" />
         </StackPanel>
     </Grid>
