@@ -37,7 +37,7 @@
         <Label Content="Gewicht" Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" />
         <Label Content="Modulprüfung?" Grid.Column="0" Grid.Row="6" VerticalAlignment="Center" />
 
-        <ComboBox x:Name="comboLernender" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" SelectedItem="{Binding Path=Lernender}">
+        <ComboBox x:Name="comboLernender" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" SelectedItem="{Binding Path=Lernender, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel>
@@ -52,18 +52,37 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <ComboBox x:Name="comboModul" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Text="{Binding Path=Modul}" IsEditable="True">
+        <ComboBox x:Name="comboModul" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Text="{Binding Path=Modul, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" IsEditable="True">
             <ComboBoxItem Content="101" />
             <ComboBoxItem Content="106" />
             <ComboBoxItem Content="187" />
         </ComboBox>
-        <TextBox x:Name="txtWert" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Text="{Binding Path=Wert}" />
-        <TextBox x:Name="txtGewicht" Grid.Column="1" Grid.Row="5" VerticalAlignment="Center" Text="{Binding Path=Gewicht}" />
+        <TextBox x:Name="txtWert" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Text="{Binding Path=Wert, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox x:Name="txtGewicht" Grid.Column="1" Grid.Row="5" VerticalAlignment="Center" Text="{Binding Path=Gewicht, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
         <CheckBox x:Name="checkMP" Grid.Column="1" Grid.Row="6" IsChecked="{Binding Path=IstMP}"
                   VerticalAlignment="Center" Content="Modulprüfung" />
 
         <StackPanel Orientation="Horizontal" Grid.Row="8" Grid.ColumnSpan="2" HorizontalAlignment="Right">
-            <Button x:Name="btnOk" Content="Speichern" IsDefault="True" Click="BtnOk_Click" Margin="5" Padding="2" />
+            <Button x:Name="btnOk" Content="Speichern" IsDefault="True" Click="BtnOk_Click" Margin="5" Padding="2">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=comboLernender, Path=(Validation.HasError)}" Value="True">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=comboModul, Path=(Validation.HasError)}" Value="True">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=txtWert, Path=(Validation.HasError)}" Value="True">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=txtGewicht, Path=(Validation.HasError)}" Value="True">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
             <Button x:Name="btnCancel" Content="Abbrechen" IsCancel="True" Click="BtnCancel_Click" Margin="5" Padding="2" />
         </StackPanel>
     </Grid>
