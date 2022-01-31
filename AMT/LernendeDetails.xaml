@@ -71,7 +71,32 @@
             <DatePicker x:Name="dateEnde" Grid.Column="1" Grid.Row="14" VerticalAlignment="Center" SelectedDate="{Binding EndeGrundausbildung}" />
 
             <StackPanel Orientation="Horizontal" Grid.Row="15" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,0,15,0">
-                <Button x:Name="btnOk" Content="Speichern" IsDefault="True" Click="BtnOk_Click" Margin="0,3" />
+                <Button x:Name="btnOk" Content="Speichern" IsDefault="True" Click="BtnOk_Click" Margin="0,3">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=txtVorname, Path=(Validation.HasError)}" Value="True">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=txtNachname, Path=(Validation.HasError)}" Value="True">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=txtEmail, Path=(Validation.HasError)}" Value="True">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=txtGeschlecht, Path=(Validation.HasError)}" Value="True">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=txtBeruf, Path=(Validation.HasError)}" Value="True">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=comboFirma, Path=(Validation.HasError)}" Value="True">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
                 <Button x:Name="btnCancel" Content="Abbrechen" IsCancel="True" Click="BtnCancel_Click" Margin="3,3,0,3" />
             </StackPanel>
         </Grid>
