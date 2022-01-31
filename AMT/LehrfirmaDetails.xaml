@@ -36,13 +36,23 @@
         <Label Content="PLZ" Grid.Column="0" Grid.Row="5" Margin="3" VerticalAlignment="Center" />
 
         <TextBox x:Name="txtId" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Text="{Binding Id}" IsReadOnly="True" />
-        <TextBox x:Name="txtName" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Text="{Binding Name}" ForceCursor="True" />
+        <TextBox x:Name="txtName" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Text="{Binding Name, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ForceCursor="True" />
         <TextBox x:Name="txtAdresse" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Text="{Binding Adresse}" />
         <TextBox x:Name="txtOrt" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Text="{Binding Ort}" />
         <TextBox x:Name="txtPlz" MaxLength="10" Grid.Column="1" Grid.Row="5" VerticalAlignment="Center" Text="{Binding Plz}" />
 
         <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,0,15,0">
-            <Button x:Name="btnOk" Content="Speichern" IsDefault="True" Click="BtnOk_Click" Margin="0,3" />
+            <Button x:Name="btnOk" Content="Speichern" IsDefault="True" Click="BtnOk_Click" Margin="0,3">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=txtName, Path=(Validation.HasError)}" Value="True">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
             <Button x:Name="btnCancel" Content="Abbrechen" IsCancel="True" Click="BtnCancel_Click" Margin="3,3,0,3" />
         </StackPanel>
     </Grid>
