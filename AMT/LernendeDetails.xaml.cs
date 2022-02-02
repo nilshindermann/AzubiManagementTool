@@ -51,11 +51,21 @@ namespace AMT
 
                 case Mode.DELETE:
                     lblTitle.Content = "AZUBI LÖSCHEN ?";
-                    txtVorname.IsReadOnly = true;
-                    txtNachname.IsReadOnly = true;
-                    txtEmail.IsReadOnly = true;
-                    txtGeschlecht.IsReadOnly = true;
-                    txtBeruf.IsReadOnly = true;
+                    txtId.IsEnabled = false;
+                    txtVorname.IsEnabled = false;
+                    txtNachname.IsEnabled = false;
+                    txtEmail.IsEnabled = false;
+                    dateGeburt.IsEnabled = false;
+                    txtGeschlecht.IsEnabled = false;
+                    txtBeruf.IsEnabled = false;
+                    comboFirma.IsEnabled = false;
+                    btnFirmaErstellen.IsEnabled = false;
+                    txtKlassenjahrgang.IsEnabled = false;
+                    txtSchule.IsEnabled = false;
+                    txtSchulklasse.IsEnabled = false;
+                    checkBMS.IsEnabled = false;
+                    dateBeginn.IsEnabled = false;
+                    dateEnde.IsEnabled = false;
                     btnOk.Content = "Löschen";
                     break;
 

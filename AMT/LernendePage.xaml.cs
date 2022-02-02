@@ -32,15 +32,6 @@ namespace AMT
             listView.ItemsSource = await _db.Lernende.Include(l => l.Lehrfirma).ToListAsync();
         }
 
-        /// <summary>
-        /// Speichert Änderungen der Datenbank und aktualisiert die Liste
-        /// </summary>
-        private async void SaveAndFetch()
-        {
-            await _db.SaveChangesAsync();
-            Fetch();
-        }
-
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             Fetch();
@@ -78,24 +69,17 @@ namespace AMT
 
         private void ApplicationDelete_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = listView != null && listView.SelectedItems.Count > 0;
+            e.CanExecute = listView != null && listView.SelectedItems.Count == 1;
         }
 
         private void ApplicationDelete_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            // copy selected items
-            List<Lernende> lernende = new();
-            foreach (Lernende item in listView.SelectedItems)
+            // open delete dialog for selected item
+            if (listView.SelectedItem is Lernende lern)
             {
-                lernende.Add(item);
+                var page = new LernendeDetails(_db, Model.Mode.DELETE, lern);
+                NavigationService.Navigate(page);
             }
-            // remove from listView
-            foreach (var item in lernende)
-            {
-                _db.Lernende.Remove(item);
-            }
-
-            SaveAndFetch();
         }
 
         private void CommandSendMail_CanExecute(object sender, CanExecuteRoutedEventArgs e)
