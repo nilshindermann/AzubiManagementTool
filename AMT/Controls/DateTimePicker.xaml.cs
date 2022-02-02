@@ -31,14 +31,14 @@ namespace AMT.Controls
             set => SetValue(SelectedDateProperty, value);
         }
 
-        #endregion
+        #endregion "Properties"
 
         #region "DependencyProperties"
 
         public static readonly DependencyProperty SelectedDateProperty = DependencyProperty.Register("SelectedDate",
             typeof(DateTime), typeof(DateTimePicker), new FrameworkPropertyMetadata(DateTime.Now, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
-        #endregion
+        #endregion "DependencyProperties"
 
         public DateTimePicker()
         {
@@ -82,7 +82,7 @@ namespace AMT.Controls
             }
         }
 
-        #endregion
+        #endregion "EventHandlers"
     }
 
     [ValueConversion(typeof(bool), typeof(bool))]

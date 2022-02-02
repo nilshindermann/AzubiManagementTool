@@ -77,6 +77,7 @@ namespace AMT
                         NavigationService.Navigate(pageNote);
                         e.Handled = true;
                         break;
+
                     default:
                         break;
                 }
@@ -112,6 +113,7 @@ namespace AMT
                         NavigationService.Navigate(pageNote);
                         e.Handled = true;
                         break;
+
                     default:
                         break;
                 }
@@ -147,6 +149,7 @@ namespace AMT
                         NavigationService.Navigate(pageNote);
                         e.Handled = true;
                         break;
+
                     default:
                         break;
                 }

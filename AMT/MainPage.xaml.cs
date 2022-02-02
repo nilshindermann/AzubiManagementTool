@@ -30,12 +30,15 @@ namespace AMT
                     case "l":
                         NavigationService.Navigate(_lernendePage);
                         break;
+
                     case "f":
                         NavigationService.Navigate(_lehrfirmenPage);
                         break;
+
                     case "k":
                         NavigationService.Navigate(_kontaktpersonenPage);
                         break;
+
                     default:
                         return;
                 }

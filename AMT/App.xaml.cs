@@ -41,6 +41,7 @@ namespace AMT
 
             base.OnStartup(e);
         }
+
         protected override async void OnExit(ExitEventArgs e)
         {
             using (_host)

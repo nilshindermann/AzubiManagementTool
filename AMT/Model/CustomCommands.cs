@@ -12,6 +12,7 @@ namespace AMT.Model
             {
                 new KeyGesture(Key.F2)
             });
+
         public static readonly RoutedUICommand SendMail = new("Send Mail", "SendMail", typeof(CustomCommands));
     }
 }

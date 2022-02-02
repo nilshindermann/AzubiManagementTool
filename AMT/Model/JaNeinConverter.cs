@@ -33,6 +33,7 @@ namespace AMT.Model
                 case "yes":
                 case "oui":
                     return true;
+
                 case "nein":
                 case "no":
                 case "non":
