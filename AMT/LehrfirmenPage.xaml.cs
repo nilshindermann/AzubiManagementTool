@@ -30,15 +30,6 @@ namespace AMT
             listView.ItemsSource = await _db.Lehrfirmen.ToListAsync();
         }
 
-        /// <summary>
-        /// Speichert Änderungen der Datenbank und aktualisiert die Liste mit Lehrfirmen
-        /// </summary>
-        private async void SaveAndFetch()
-        {
-            await _db.SaveChangesAsync();
-            Fetch();
-        }
-
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             Fetch();

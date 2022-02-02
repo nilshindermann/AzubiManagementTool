@@ -31,15 +31,6 @@ namespace AMT
             listView.ItemsSource = await _db.Kontaktpersonen.Include(l => l.Lehrfirma).ToListAsync();
         }
 
-        /// <summary>
-        /// Speichert Änderungen der Datenbank und aktualisiert die Liste mit Kontaktpersonen
-        /// </summary>
-        private async void SaveAndFetch()
-        {
-            await _db.SaveChangesAsync();
-            Fetch();
-        }
-
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             Fetch();
@@ -78,24 +69,17 @@ namespace AMT
 
         private void ApplicationDelete_CanExecute(object sender, System.Windows.Input.CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = listView != null && listView.SelectedItems.Count > 0;
+            e.CanExecute = listView != null && listView.SelectedItems.Count == 1;
         }
 
         private void ApplicationDelete_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
         {
-            // copy selected items
-            List<Kontaktperson> kontaktpersonen = new();
-            foreach (Kontaktperson item in listView.SelectedItems)
+            // open delete dialog for selected item
+            if (listView.SelectedItem is Kontaktperson kontakt)
             {
-                kontaktpersonen.Add(item);
+                var page = new KontaktpersonDetails(_db, Model.Mode.DELETE, kontakt);
+                NavigationService.Navigate(page);
             }
-            // remove from listView
-            foreach (var item in kontaktpersonen)
-            {
-                _db.Kontaktpersonen.Remove(item);
-            }
-
-            SaveAndFetch();
         }
 
         private void CommandSendMail_CanExecute(object sender, System.Windows.Input.CanExecuteRoutedEventArgs e)

@@ -44,10 +44,13 @@ namespace AMT
                     break;
 
                 case Mode.DELETE:
-                    lblTitle.Content = "Kontaktperson löschen ?";
-                    txtVorname.IsReadOnly = true;
-                    txtNachname.IsReadOnly = true;
-                    txtEmail.IsReadOnly = true;
+                    lblTitle.Content = "Kontaktperson löschen?";
+                    txtId.IsEnabled = false;
+                    txtVorname.IsEnabled = false;
+                    txtNachname.IsEnabled = false;
+                    txtEmail.IsEnabled = false;
+                    txtTelefon.IsEnabled = false;
+                    comboFirma.IsEnabled = false;
                     btnOk.Content = "Löschen";
                     break;
 
