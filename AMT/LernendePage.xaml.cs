@@ -158,16 +158,13 @@ namespace AMT
             Fetch();
         }
 
-        private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            // right click item
-            if (sender is ListViewItem item && item.IsSelected)
+            // double clicked list item
+            if (sender is ListViewItem item && item.Content is Lernende lernende)
             {
-                if (item.Content is Lernende lernende)
-                {
-                    var page = new LernendeInfo(lernende, _db);
-                    NavigationService.Navigate(page);
-                }
+                var page = new LernendeInfo(lernende, _db);
+                NavigationService.Navigate(page);
             }
         }
     }
