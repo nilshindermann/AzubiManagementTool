@@ -78,24 +78,19 @@ namespace AMT
 
         private void ApplicationDelete_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = listView != null && listView.SelectedItems.Count > 0;
+            e.CanExecute = listView != null && listView.SelectedItems.Count == 1;
         }
 
         private void ApplicationDelete_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            // copy selected items
-            List<Lehrfirma> lernende = new();
-            foreach (Lehrfirma item in listView.SelectedItems)
+            // open delete dialog for selected item
+            if (listView.SelectedItem is Lehrfirma firma)
             {
-                lernende.Add(item);
+                var page = new LehrfirmaDetails(firma);
+                page.SetContext(_db);
+                page.SetMode(Model.Mode.DELETE);
+                NavigationService.Navigate(page);
             }
-            // remove from listView
-            foreach (var item in lernende)
-            {
-                _db.Lehrfirmen.Remove(item);
-            }
-
-            SaveAndFetch();
         }
 
         private void CommandUpdate_CanExecute(object sender, CanExecuteRoutedEventArgs e)

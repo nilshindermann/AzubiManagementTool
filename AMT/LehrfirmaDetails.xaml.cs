@@ -50,10 +50,11 @@ namespace AMT
 
                 case Mode.DELETE:
                     lblTitle.Content = "Lehrfirma löschen?";
-                    txtName.IsReadOnly = true;
-                    txtAdresse.IsReadOnly = true;
-                    txtOrt.IsReadOnly = true;
-                    txtPlz.IsReadOnly = true;
+                    txtId.IsEnabled = false;
+                    txtName.IsEnabled = false;
+                    txtAdresse.IsEnabled = false;
+                    txtOrt.IsEnabled = false;
+                    txtPlz.IsEnabled = false;
                     btnOk.Content = "Löschen";
                     break;
 
