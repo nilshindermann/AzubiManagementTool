@@ -29,7 +29,30 @@ namespace AMT
         /// </summary>
         private async void Fetch()
         {
-            listView.ItemsSource = await _db.Lernende.Include(l => l.Lehrfirma).ToListAsync();
+            // disable user input buttons
+            btnNew.IsEnabled = false;
+            btnEdit.IsEnabled = false;
+            btnDelete.IsEnabled = false;
+            btnRefresh.IsEnabled = false;
+            btnMail.IsEnabled = false;
+            btnMailAll.IsEnabled = false;
+
+            try
+            {
+                listView.ItemsSource = await _db.Lernende.Include(l => l.Lehrfirma).ToListAsync();
+                // enable buttons if successfully connected
+                btnNew.IsEnabled = true;
+                btnEdit.IsEnabled = true;
+                btnDelete.IsEnabled = true;
+                btnRefresh.IsEnabled = true;
+                btnMail.IsEnabled = true;
+                btnMailAll.IsEnabled = true;
+            }
+            catch (System.Exception)
+            {
+                // error message
+                MessageBox.Show("Es ist ein Fehler aufgetreten!\nKeine Verbindung zur Datenbank", "Fehler!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)

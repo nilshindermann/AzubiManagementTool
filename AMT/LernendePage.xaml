@@ -51,12 +51,12 @@
 
     <DockPanel>
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
-            <Button Margin="5" Padding="5" Content="Neu" Command="ApplicationCommands.New" />
-            <Button Margin="5" Padding="5" Content="Ändern" Command="self:CustomCommands.Edit" />
-            <Button Margin="5" Padding="5" Content="Löschen" Command="ApplicationCommands.Delete" />
-            <Button Margin="5" Padding="5" Content="Aktualisieren" Command="NavigationCommands.Refresh" />
-            <Button Margin="5" Padding="5" Content="E-Mail" Command="self:CustomCommands.SendMail" />
-            <Button Margin="5" Padding="5" Content="E-Mail (ALLE)" Command="self:CustomCommands.SendMail" CommandParameter="all" />
+            <Button x:Name="btnNew" Margin="5" Padding="5" Content="Neu" Command="ApplicationCommands.New" />
+            <Button x:Name="btnEdit" Margin="5" Padding="5" Content="Ändern" Command="self:CustomCommands.Edit" />
+            <Button x:Name="btnDelete" Margin="5" Padding="5" Content="Löschen" Command="ApplicationCommands.Delete" />
+            <Button x:Name="btnRefresh" Margin="5" Padding="5" Content="Aktualisieren" Command="NavigationCommands.Refresh" />
+            <Button x:Name="btnMail" Margin="5" Padding="5" Content="E-Mail" Command="self:CustomCommands.SendMail" />
+            <Button x:Name="btnMailAll" Margin="5" Padding="5" Content="E-Mail (ALLE)" Command="self:CustomCommands.SendMail" CommandParameter="all" />
             <TextBlock>
                 <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://www.nilsh.ch">www.nilsh.ch</Hyperlink>
                 <LineBreak />
