@@ -52,6 +52,7 @@ namespace AMT
         {
             // only can execute if parameter is a specific string and an item is selected
             e.CanExecute = e.Parameter is string s && (
+                s == "MAIN" ||
                 (s == "NOTE" && listNoten != null && listNoten.SelectedItem != null) ||
                 (s == "BESUCH" && listBesuche != null && listBesuche.SelectedItem != null));
         }
@@ -62,6 +63,12 @@ namespace AMT
             {
                 switch (param)
                 {
+                    case "MAIN":
+                        var pageEdit = new LernendeDetails(_db, Model.Mode.EDIT, (Lernende)DataContext);
+                        NavigationService.Navigate(pageEdit);
+                        e.Handled = true;
+                        break;
+
                     case "BESUCH":
                         var besuch = (Besuch)listBesuche.SelectedItem;
                         PageFunction<Besuch> pageBesuch = new BesuchDetails(_db, Model.Mode.EDIT, besuch);

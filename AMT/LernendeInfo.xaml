@@ -49,41 +49,46 @@
             <ColumnDefinition Width="40*" MinWidth="50" />
         </Grid.ColumnDefinitions>
 
-        <ScrollViewer Grid.Column="0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Padding="5">
-            <StackPanel>
-                <TextBlock Style="{StaticResource TextHeader}" Text="Vorname" />
-                <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=Vorname}" />
-                <TextBlock Style="{StaticResource TextHeader}" Text="Nachname" />
-                <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=Nachname}" />
-                <TextBlock Style="{StaticResource TextHeader}" Text="Geschlecht" />
-                <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=Geschlecht}" />
-                <TextBlock Style="{StaticResource TextHeader}" Text="Geburtsdatum" />
-                <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=Geburtsdatum, StringFormat=d, ConverterCulture='de-CH'}" />
-                <TextBlock Style="{StaticResource TextHeader}" Text="E-Mail (azo)" />
-                <TextBlock Style="{StaticResource TextValue}">
+        <DockPanel Grid.Column="0">
+            <Button DockPanel.Dock="Bottom" Padding="2" Margin="2" Content="ÄNDERN"
+                    Command="self:CustomCommands.Edit" CommandParameter="MAIN" />
+
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Padding="5">
+                <StackPanel>
+                    <TextBlock Style="{StaticResource TextHeader}" Text="Vorname" />
+                    <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=Vorname}" />
+                    <TextBlock Style="{StaticResource TextHeader}" Text="Nachname" />
+                    <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=Nachname}" />
+                    <TextBlock Style="{StaticResource TextHeader}" Text="Geschlecht" />
+                    <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=Geschlecht}" />
+                    <TextBlock Style="{StaticResource TextHeader}" Text="Geburtsdatum" />
+                    <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=Geburtsdatum, StringFormat=d, ConverterCulture='de-CH'}" />
+                    <TextBlock Style="{StaticResource TextHeader}" Text="E-Mail (azo)" />
+                    <TextBlock Style="{StaticResource TextValue}">
                     <Hyperlink Command="self:CustomCommands.SendMail">
                         <Hyperlink.CommandParameter>
                             <Binding Path="Email" />
                         </Hyperlink.CommandParameter>
                         <Run Text="{Binding Path=Email}" />
                     </Hyperlink>
-                </TextBlock>
-                <TextBlock Style="{StaticResource TextHeader}" Text="Beruf" />
-                <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=Beruf}" />
-                <TextBlock Style="{StaticResource TextHeader}" Text="Lehrfirma" />
-                <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=Lehrfirma.Name}" />
-                <TextBlock Style="{StaticResource TextHeader}" Text="Schule" />
-                <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=Schule}" />
-                <TextBlock Style="{StaticResource TextHeader}" Text="Schulklasse" />
-                <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=Schulklasse}" />
-                <TextBlock Style="{StaticResource TextHeader}" Text="BMS" />
-                <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=BMS, Converter={StaticResource JaNeinConvert}}" />
-                <TextBlock Style="{StaticResource TextHeader}" Text="Beginn Grundausbildung" />
-                <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=BeginnGrundausbildung, StringFormat=d, ConverterCulture='de-CH'}" />
-                <TextBlock Style="{StaticResource TextHeader}" Text="Ende Grundausbildung" />
-                <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=EndeGrundausbildung, StringFormat=d, ConverterCulture='de-CH'}" />
-            </StackPanel>
-        </ScrollViewer>
+                    </TextBlock>
+                    <TextBlock Style="{StaticResource TextHeader}" Text="Beruf" />
+                    <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=Beruf}" />
+                    <TextBlock Style="{StaticResource TextHeader}" Text="Lehrfirma" />
+                    <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=Lehrfirma.Name}" />
+                    <TextBlock Style="{StaticResource TextHeader}" Text="Schule" />
+                    <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=Schule}" />
+                    <TextBlock Style="{StaticResource TextHeader}" Text="Schulklasse" />
+                    <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=Schulklasse}" />
+                    <TextBlock Style="{StaticResource TextHeader}" Text="BMS" />
+                    <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=BMS, Converter={StaticResource JaNeinConvert}}" />
+                    <TextBlock Style="{StaticResource TextHeader}" Text="Beginn Grundausbildung" />
+                    <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=BeginnGrundausbildung, StringFormat=d, ConverterCulture='de-CH'}" />
+                    <TextBlock Style="{StaticResource TextHeader}" Text="Ende Grundausbildung" />
+                    <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=EndeGrundausbildung, StringFormat=d, ConverterCulture='de-CH'}" />
+                </StackPanel>
+            </ScrollViewer>
+        </DockPanel>
         <GridSplitter Width="10" Grid.Column="1" HorizontalAlignment="Stretch" />
         <Grid Grid.Column="2">
             <Grid.ColumnDefinitions>

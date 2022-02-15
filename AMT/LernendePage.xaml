@@ -57,7 +57,8 @@
             <Button x:Name="btnRefresh" Margin="5" Padding="5" Content="Aktualisieren" Command="NavigationCommands.Refresh" />
             <Button x:Name="btnMail" Margin="5" Padding="5" Content="E-Mail" Command="self:CustomCommands.SendMail" />
             <Button x:Name="btnMailAll" Margin="5" Padding="5" Content="E-Mail (ALLE)" Command="self:CustomCommands.SendMail" CommandParameter="all" />
-            <TextBlock>
+            <CheckBox Margin="5" Content="Ausgeblendet" VerticalAlignment="Center" HorizontalAlignment="Right" IsEnabled="False" />
+            <TextBlock TextAlignment="Right">
                 <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://www.nilsh.ch">www.nilsh.ch</Hyperlink>
                 <LineBreak />
                 <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="mailto:support@nilsh.ch?subject=Azubi Management Tool Support">support@nilsh.ch</Hyperlink>
@@ -79,6 +80,7 @@
                     <GridViewColumn DisplayMemberBinding="{Binding Geschlecht}" Header="Geschlecht" />
                     <GridViewColumn DisplayMemberBinding="{Binding Beruf}" Header="Beruf" />
                     <GridViewColumn DisplayMemberBinding="{Binding Path=Lehrfirma.Name}" Header="Lehrfirma" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Schule}" Header="Schule" />
                 </GridView>
             </ListView.View>
         </ListView>
