@@ -79,9 +79,7 @@ namespace AMT
 
         private void ApplicationNew_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            LehrfirmaDetails page = new(null);
-            page.SetContext(_db);
-            page.SetMode(Model.Mode.NEW);
+            var page = new LehrfirmaDetails(_db, Model.Mode.NEW, null);
             NavigationService.Navigate(page);
         }
 
@@ -95,9 +93,7 @@ namespace AMT
             // open delete dialog for selected item
             if (listView.SelectedItem is Lehrfirma firma)
             {
-                var page = new LehrfirmaDetails(firma);
-                page.SetContext(_db);
-                page.SetMode(Model.Mode.DELETE);
+                var page = new LehrfirmaDetails(_db, Model.Mode.DELETE, firma);
                 NavigationService.Navigate(page);
             }
         }
@@ -109,9 +105,7 @@ namespace AMT
 
         private void CommandUpdate_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            LehrfirmaDetails page = new((Lehrfirma)listView.SelectedItem);
-            page.SetContext(_db);
-            page.SetMode(Model.Mode.EDIT);
+            var page = new LehrfirmaDetails(_db, Model.Mode.EDIT, (Lehrfirma)listView.SelectedItem);
             NavigationService.Navigate(page);
             e.Handled = true;
         }

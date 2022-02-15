@@ -118,9 +118,7 @@ namespace AMT
                 return;
             }
 
-            var page = new LehrfirmaDetails(null);
-            page.SetContext(_db);
-            page.SetMode(Mode.NEW);
+            var page = new LehrfirmaDetails(_db, Mode.NEW, null);
             page.Return += new ReturnEventHandler<Lehrfirma>(Page_Return);
             NavigationService.Navigate(page);
         }

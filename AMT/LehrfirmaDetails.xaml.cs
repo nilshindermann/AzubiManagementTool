@@ -11,29 +11,20 @@ namespace AMT
     /// </summary>
     public partial class LehrfirmaDetails
     {
-        private AMTContext? _db;
-        private Mode _mode = Mode.NONE;
+        private readonly AMTContext? _db;
+        private readonly Mode _mode = Mode.NONE;
 
-        public LehrfirmaDetails() : this(null)
-        {
-        }
-
-        public LehrfirmaDetails(Lehrfirma? lernende)
+        public LehrfirmaDetails(AMTContext db, Mode mode, Lehrfirma? lernende)
         {
             InitializeComponent();
 
+            _db = db;
+            _mode = mode;
+
             // set Data Context
             DataContext = lernende ?? new Lehrfirma();
-        }
 
-        public void SetContext(AMTContext db)
-        {
-            _db = db;
-        }
-
-        public void SetMode(Mode mode)
-        {
-            _mode = mode;
+            // Title and Elements
             switch (_mode)
             {
                 case Mode.NONE:
