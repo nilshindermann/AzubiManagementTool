@@ -40,8 +40,15 @@ namespace AMT
 
         private void CommandGoBack_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            rootFrame?.GoBack();
-            e.Handled = true;
+            try
+            {
+                rootFrame?.GoBack();
+                e.Handled = true;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(this, "Sie können nicht dorthin navigieren", "Sorry", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void CommandGoForward_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -51,8 +58,15 @@ namespace AMT
 
         private void CommandGoForward_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            rootFrame?.GoForward();
-            e.Handled = true;
+            try
+            {
+                rootFrame?.GoForward();
+                e.Handled = true;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(this, "Sie können nicht dorthin navigieren", "Sorry", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         // NAVIGATION ANIMATION
