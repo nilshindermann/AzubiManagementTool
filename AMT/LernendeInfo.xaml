@@ -25,6 +25,7 @@
 
     <Page.Resources>
         <self:JaNeinConverter x:Key="JaNeinConvert" />
+        <self:IfTrueStringConverter x:Key="TrueStringConvert" />
         <Style x:Key="TextTitle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="18" />
             <Setter Property="FontWeight" Value="Bold" />
@@ -110,8 +111,9 @@
                             <TextBlock Text="{Binding Path=Modul}" />
                             <TextBlock Text=" | " />
                             <TextBlock Text="{Binding Path=Wert, StringFormat='{}{0:0.00}'}" />
-                            <TextBlock Text=" | Gewicht: " />
+                            <TextBlock Text=" | x" />
                             <TextBlock Text="{Binding Path=Gewicht}" />
+                            <TextBlock Text="{Binding Path=IstMP, Converter={StaticResource TrueStringConvert}, ConverterParameter=' (MP)'}" />
                         </WrapPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
