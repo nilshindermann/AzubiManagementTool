@@ -80,7 +80,16 @@ namespace AMT
                     break;
             }
 
-            _db.SaveChanges();
+            try
+            {
+                _db.SaveChanges();
+            }
+            catch (System.Exception)
+            {
+                MessageBox.Show("Es ist ein Fehler aufgetreten.\nMöglicherweise gab es ein Problem mit den Daten.",
+                    "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
             OnReturn(new ReturnEventArgs<Note>((Note)DataContext));
         }
 

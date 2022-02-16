@@ -70,22 +70,29 @@ namespace AMT
             {
                 case Mode.NEW:
                     _db.Add(DataContext);
-                    _db.SaveChanges();
                     break;
 
                 case Mode.EDIT:
                     _db.Update(DataContext);
-                    _db.SaveChanges();
                     break;
 
                 case Mode.DELETE:
                     _db.Remove(DataContext);
-                    _db.SaveChanges();
                     break;
 
                 case Mode.NONE:
                 default:
                     break;
+            }
+
+            try
+            {
+                _db.SaveChanges();
+            }
+            catch (System.Exception)
+            {
+                MessageBox.Show("Es ist ein Fehler aufgetreten.\nMöglicherweise gab es ein Problem mit den Daten.",
+                    "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             NavigationService.GoBack();
