@@ -66,6 +66,11 @@ namespace AMT
                     checkBMS.IsEnabled = false;
                     dateBeginn.IsEnabled = false;
                     dateEnde.IsEnabled = false;
+                    txtHandynummer.IsEnabled = false;
+                    txtEmailEltern.IsEnabled = false;
+                    txtTelefonEltern.IsEnabled = false;
+                    txtAemtli.IsEnabled = false;
+                    txtAnmerkungen.IsEnabled = false;
                     btnOk.Content = "Löschen";
                     break;
 

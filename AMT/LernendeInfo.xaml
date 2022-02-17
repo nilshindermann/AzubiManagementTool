@@ -5,7 +5,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:self="clr-namespace:AMT.Model"
       mc:Ignorable="d"
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="800" d:DesignWidth="800"
       Title="LernendeInfo" Background="White">
 
     <Page.CommandBindings>
@@ -87,6 +87,23 @@
                     <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=BeginnGrundausbildung, StringFormat=d, ConverterCulture='de-CH'}" />
                     <TextBlock Style="{StaticResource TextHeader}" Text="Ende Grundausbildung" />
                     <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=EndeGrundausbildung, StringFormat=d, ConverterCulture='de-CH'}" />
+                    <TextBlock Style="{StaticResource TextHeader}" Text="Handynummer" />
+                    <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=Handynummer}" />
+                    <TextBlock Style="{StaticResource TextHeader}" Text="E-Mail Eltern" />
+                    <TextBlock Style="{StaticResource TextValue}">
+                    <Hyperlink Command="self:CustomCommands.SendMail">
+                        <Hyperlink.CommandParameter>
+                            <Binding Path="EmailEltern" />
+                        </Hyperlink.CommandParameter>
+                        <Run Text="{Binding Path=EmailEltern}" />
+                    </Hyperlink>
+                    </TextBlock>
+                    <TextBlock Style="{StaticResource TextHeader}" Text="Telefon Eltern" />
+                    <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=TelefonEltern}" />
+                    <TextBlock Style="{StaticResource TextHeader}" Text="Ämtli" />
+                    <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=Aemtli}" />
+                    <TextBlock Style="{StaticResource TextHeader}" Text="Anmerkungen" />
+                    <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=Anmerkungen}" />
                 </StackPanel>
             </ScrollViewer>
         </DockPanel>

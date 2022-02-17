@@ -6,7 +6,7 @@
     xmlns:model="clr-namespace:AMTCore.Models;assembly=AMTCore"
     x:Class="AMT.LernendeDetails"
     mc:Ignorable="d"
-    d:DesignHeight="450" d:DesignWidth="800" Background="White"
+    d:DesignHeight="800" d:DesignWidth="800" Background="White"
     Title="LernendeDetails" DataContext="{x:Type model:Lernende}">
 
     <ScrollViewer Padding="0,15,0,0">
@@ -17,6 +17,11 @@
                 <ColumnDefinition MinWidth="10px" Width="Auto" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -52,6 +57,13 @@
             <Label Content="BMS" Grid.Column="0" Grid.Row="12" Margin="3" VerticalAlignment="Center" />
             <Label Content="Beginn Grundausbildung" Grid.Column="0" Grid.Row="13" Margin="3" VerticalAlignment="Center" />
             <Label Content="Ende Grundausbildung" Grid.Column="0" Grid.Row="14" Margin="3" VerticalAlignment="Center" />
+            <Label Content="Handynummer" Grid.Column="0" Grid.Row="15" Margin="3" VerticalAlignment="Center" />
+            <TextBlock Grid.Column="0" Grid.Row="16" Padding="5" VerticalAlignment="Center">
+                 E-Mail Eltern<LineBreak />(Eine Adresse pro Zeile)
+            </TextBlock>
+            <Label Content="Telefon Eltern" Grid.Column="0" Grid.Row="17" Margin="3" VerticalAlignment="Center" />
+            <Label Content="Ämtli" Grid.Column="0" Grid.Row="18" Margin="3" VerticalAlignment="Center" />
+            <Label Content="Anmerkungen" Grid.Column="0" Grid.Row="19" Margin="3" VerticalAlignment="Center" />
 
             <TextBox x:Name="txtId" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Text="{Binding Id}" IsReadOnly="True" />
             <TextBox x:Name="txtVorname" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Text="{Binding Vorname, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ForceCursor="True" />
@@ -69,8 +81,13 @@
             <CheckBox x:Name="checkBMS" Content="BMS" Grid.Column="1" Grid.Row="12" VerticalAlignment="Center" IsChecked="{Binding BMS}" />
             <DatePicker x:Name="dateBeginn" Grid.Column="1" Grid.Row="13" VerticalAlignment="Center" SelectedDate="{Binding BeginnGrundausbildung}" />
             <DatePicker x:Name="dateEnde" Grid.Column="1" Grid.Row="14" VerticalAlignment="Center" SelectedDate="{Binding EndeGrundausbildung}" />
+            <TextBox x:Name="txtHandynummer" Grid.Column="1" Grid.Row="15" VerticalAlignment="Center" Text="{Binding Handynummer}" />
+            <TextBox x:Name="txtEmailEltern" Grid.Column="1" Grid.Row="16" VerticalAlignment="Center" Text="{Binding EmailEltern}" AcceptsReturn="True" />
+            <TextBox x:Name="txtTelefonEltern" Grid.Column="1" Grid.Row="17" VerticalAlignment="Center" Text="{Binding TelefonEltern}" />
+            <TextBox x:Name="txtAemtli" Grid.Column="1" Grid.Row="18" VerticalAlignment="Center" Text="{Binding Aemtli}" />
+            <TextBox x:Name="txtAnmerkungen" Grid.Column="1" Grid.Row="19" VerticalAlignment="Center" Text="{Binding Anmerkungen}" AcceptsReturn="True" />
 
-            <StackPanel Orientation="Horizontal" Grid.Row="15" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,0,15,0">
+            <StackPanel Orientation="Horizontal" Grid.Row="20" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,0,15,0">
                 <Button x:Name="btnOk" Content="Speichern" IsDefault="True" Click="BtnOk_Click" Margin="0,3">
                     <Button.Style>
                         <Style TargetType="Button">

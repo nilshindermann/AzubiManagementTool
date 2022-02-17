@@ -43,7 +43,7 @@ namespace AMT
         {
             if (e.Parameter is string mail)
             {
-                Process.Start(new ProcessStartInfo($"mailto:{mail}") { UseShellExecute = true });
+                Process.Start(new ProcessStartInfo($"mailto:{mail.Replace("\n", ";")}") { UseShellExecute = true });
                 e.Handled = true;
             }
         }
