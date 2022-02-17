@@ -71,5 +71,10 @@ namespace AMTCore.Models
         public Lehrfirma Lehrfirma { get; set; }
         public DateTime? BeginnGrundausbildung { get; set; }
         public DateTime? EndeGrundausbildung { get; set; }
+        public string? Handynummer { get; set; }
+        public string? EmailEltern { get; set; }
+        public string? TelefonEltern { get; set; }
+        public string? Aemtli { get; set; }
+        public string? Anmerkungen { get; set; }
     }
 }
