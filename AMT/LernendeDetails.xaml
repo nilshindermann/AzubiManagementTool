@@ -71,12 +71,21 @@
             <TextBox x:Name="txtEmail" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Text="{Binding Email, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
             <DatePicker x:Name="dateGeburt" Grid.Column="1" Grid.Row="5" VerticalAlignment="Center" SelectedDate="{Binding Geburtsdatum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
             <TextBox x:Name="txtGeschlecht" MaxLength="1" Grid.Column="1" Grid.Row="6" VerticalAlignment="Center" Text="{Binding Geschlecht, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
-            <TextBox x:Name="txtBeruf" MaxLength="3" Grid.Column="1" Grid.Row="7" VerticalAlignment="Center" Text="{Binding Beruf, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+            <ComboBox x:Name="comboBeruf" Grid.Column="1" Grid.Row="7" VerticalAlignment="Center" Text="{Binding Beruf, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
+                <ComboBoxItem>API</ComboBoxItem>
+                <ComboBoxItem>PLA</ComboBoxItem>
+                <ComboBoxItem>ICT</ComboBoxItem>
+                <ComboBoxItem>BIP</ComboBoxItem>
+            </ComboBox>
             <ComboBox x:Name="comboFirma" Grid.Column="1" Grid.Row="8" VerticalAlignment="Center" SelectedItem="{Binding Lehrfirma, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" />
             <Button x:Name="btnFirmaErstellen" Grid.Column="2" Grid.Row="8" Click="BtnFirmaErstellen_Click"
                 VerticalAlignment="Center" Content="Erstellen" Margin="3" Padding="3" />
             <TextBox x:Name="txtKlassenjahrgang" Grid.Column="1" Grid.Row="9" VerticalAlignment="Center" Text="{Binding Klassenjahrgang}" />
-            <TextBox x:Name="txtSchule" Grid.Column="1" Grid.Row="10" VerticalAlignment="Center" Text="{Binding Schule}" />
+            <ComboBox x:Name="comboSchule" Grid.Column="1" Grid.Row="10" VerticalAlignment="Center" Text="{Binding Schule}">
+                <ComboBoxItem>TBZ</ComboBoxItem>
+                <ComboBoxItem>BBW</ComboBoxItem>
+                <ComboBoxItem>BZU</ComboBoxItem>
+            </ComboBox>
             <TextBox x:Name="txtSchulklasse" Grid.Column="1" Grid.Row="11" VerticalAlignment="Center" Text="{Binding Schulklasse}" />
             <CheckBox x:Name="checkBMS" Content="BMS" Grid.Column="1" Grid.Row="12" VerticalAlignment="Center" IsChecked="{Binding BMS}" />
             <DatePicker x:Name="dateBeginn" Grid.Column="1" Grid.Row="13" VerticalAlignment="Center" SelectedDate="{Binding BeginnGrundausbildung}" />

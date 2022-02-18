@@ -57,11 +57,11 @@ namespace AMT
                     txtEmail.IsEnabled = false;
                     dateGeburt.IsEnabled = false;
                     txtGeschlecht.IsEnabled = false;
-                    txtBeruf.IsEnabled = false;
+                    comboBeruf.IsEnabled = false;
                     comboFirma.IsEnabled = false;
                     btnFirmaErstellen.IsEnabled = false;
                     txtKlassenjahrgang.IsEnabled = false;
-                    txtSchule.IsEnabled = false;
+                    comboSchule.IsEnabled = false;
                     txtSchulklasse.IsEnabled = false;
                     checkBMS.IsEnabled = false;
                     dateBeginn.IsEnabled = false;
