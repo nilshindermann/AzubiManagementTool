@@ -66,10 +66,7 @@
                     <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=Geburtsdatum, StringFormat=d, ConverterCulture='de-CH'}" />
                     <TextBlock Style="{StaticResource TextHeader}" Text="E-Mail (azo)" />
                     <TextBlock Style="{StaticResource TextValue}">
-                    <Hyperlink Command="self:CustomCommands.SendMail">
-                        <Hyperlink.CommandParameter>
-                            <Binding Path="Email" />
-                        </Hyperlink.CommandParameter>
+                    <Hyperlink Command="self:CustomCommands.SendMail" CommandParameter="{Binding Path=Email}">
                         <Run Text="{Binding Path=Email}" />
                     </Hyperlink>
                     </TextBlock>
@@ -83,6 +80,8 @@
                     <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=Schulklasse}" />
                     <TextBlock Style="{StaticResource TextHeader}" Text="BMS" />
                     <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=BMS, Converter={StaticResource JaNeinConvert}}" />
+                    <TextBlock Style="{StaticResource TextHeader}" Text="Klassenjahrgang" />
+                    <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=Klassenjahrgang}" />
                     <TextBlock Style="{StaticResource TextHeader}" Text="Beginn Grundausbildung" />
                     <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=BeginnGrundausbildung, StringFormat=d, ConverterCulture='de-CH'}" />
                     <TextBlock Style="{StaticResource TextHeader}" Text="Ende Grundausbildung" />
@@ -91,10 +90,7 @@
                     <TextBlock Style="{StaticResource TextValue}" Text="{Binding Path=Handynummer}" />
                     <TextBlock Style="{StaticResource TextHeader}" Text="E-Mail Eltern" />
                     <TextBlock Style="{StaticResource TextValue}">
-                    <Hyperlink Command="self:CustomCommands.SendMail">
-                        <Hyperlink.CommandParameter>
-                            <Binding Path="EmailEltern" />
-                        </Hyperlink.CommandParameter>
+                    <Hyperlink Command="self:CustomCommands.SendMail" CommandParameter="{Binding Path=EmailEltern}">
                         <Run Text="{Binding Path=EmailEltern}" />
                     </Hyperlink>
                     </TextBlock>
@@ -127,9 +123,7 @@
                             <TextBlock Text="Modul " />
                             <TextBlock Text="{Binding Path=Modul}" />
                             <TextBlock Text=" | " />
-                            <TextBlock Text="{Binding Path=Wert, StringFormat='{}{0:0.00}'}" />
-                            <TextBlock Text=" | x" />
-                            <TextBlock Text="{Binding Path=Gewicht}" />
+                            <TextBlock Text="{Binding Path=Wert, StringFormat='{}{0:0.00}'}" FontWeight="Bold" />
                             <TextBlock Text="{Binding Path=IstMP, Converter={StaticResource TrueStringConvert}, ConverterParameter=' (MP)'}" />
                         </WrapPanel>
                     </DataTemplate>
